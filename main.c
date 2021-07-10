@@ -439,20 +439,115 @@
 
 
 
-void print_dynamic_array_elements(DynamicArray* pointerToDynamicArray)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Insert_in_the_end_of_dynamic_array(DynamicArray* pointerToDynamicArray)
 {
-    printf("The number of elements of the array is : %i", n);
-    printf("\n");
-    for (int j = 0; j < n; ++j)
-    {
-        printf("The name of student %i is : %s",j + 1, (pointerToDynamicArray + j)->Student_Name);
-        printf("The ID of this student is : %i\n", (pointerToDynamicArray + j)->Student_ID);
-        printf("The score of last year of this student is : %i\n", (pointerToDynamicArray + j)->Score_Of_Last_Year);
-        printf("The date of birth of this student is : %i.%i.%i\n" , (pointerToDynamicArray + j)->Day_Of_Birth, (pointerToDynamicArray + j)->Month_Of_Birth
-               , (pointerToDynamicArray + j)->Year_Of_Birth);
-        printf("\n\n");
-    }
+    pointerToDynamicArray = (DynamicArray*) realloc(pointerToDynamicArray, (n + 1) * sizeof(DynamicArray));
+    puts("Now, you will insert the information of the recently added student");
+    puts("Insertion will be in the end!");
+    enterInformationOfStudent2(pointerToDynamicArray + n);
+    ++n;
 }
+
+void Insert_in_the_beginning_of_dynamic_array(DynamicArray* pointerToDynamicArray)
+{
+    pointerToDynamicArray = (DynamicArray*) realloc(pointerToDynamicArray, (n + 1) * sizeof(DynamicArray));
+    int h = n;
+    for(int i = h; i >= 1; --i)
+    {
+        *(pointerToDynamicArray + i) = *(pointerToDynamicArray + i - 1);
+    }
+    puts("Now, you will insert the information of the recently added student");
+    puts("Insertion will be in the end!");
+    enterInformationOfStudent2((pointerToDynamicArray));
+    n++;
+}
+
+void Insert_in_the_middle_of_dynamic_array(DynamicArray* pointerToDynamicArray)
+{
+    puts("Enter position!");
+    printf("Position should be greater than 0 and less than %i.!\n", n);
+    int position;
+    scanf("%i", &position);
+    if (position > 0 && position < n)
+    {
+        pointerToDynamicArray = (DynamicArray*) realloc(pointerToDynamicArray, (n + 1) * sizeof(DynamicArray));
+        int h = n;
+        for(int i = h; i >= position + 1; --i)
+        {
+            *(pointerToDynamicArray + i) = *(pointerToDynamicArray + i - 1);
+        }
+        puts("Now, you will insert the information of the recently added student");
+        puts("Insertion will be in the middle!");
+
+        enterInformationOfStudent2((pointerToDynamicArray + position));
+    }
+    else
+    {
+        puts("Invalid position.position out of scope!");
+        return;
+    }
+    n++;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
